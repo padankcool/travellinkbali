@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,7 +21,7 @@ export default function Navbar() {
     { name: '中文', code: 'zh-CN', flag: 'https://flagcdn.com/w40/cn.png' },
   ];
 
-  const whatsappNumber = '6281353077575';
+  const whatsappNumber = '628091000999';
   const whatsappMessage = encodeURIComponent('Hello, I would like to inquire about TravelLink Bali villa management.');
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -101,11 +102,16 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           
-          {/* Logo / Brand Name TravelLink Bali */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl md:text-2xl font-serif font-bold tracking-widest text-white">
-              TRAVELLINK <span className="text-amber-500 font-light">BALI</span>
-            </span>
+          {/* Logo Gambar TravelLink Bali */}
+          <Link href="/" className="flex items-center">
+            <Image 
+              src="/logo-travellink.png" 
+              alt="TravelLink Bali Logo" 
+              width={160} 
+              height={50} 
+              className="h-10 md:h-12 w-auto object-contain filter brightness-0 invert" 
+              priority
+            />
           </Link>
 
           {/* Menu Navigasi Desktop */}
