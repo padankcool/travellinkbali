@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Ubud Haven | Luxury Private Villas",
-  description: "Experience the serenity of Ubud",
+  title: "TravelLink Bali | Luxury Villa Management & Stays",
+  description: "Curated luxury villas and premier property management in Bali.",
   icons: {icon: "/favicon.ico", // atau "/logo.png" 
   },
 };
