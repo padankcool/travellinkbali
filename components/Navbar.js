@@ -115,7 +115,7 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Menu Navigasi Desktop */}
+          {/* Menu Navigasi One-Page Parallax */}
           <nav className="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase text-neutral-200">
             <Link href="/booking" className="hover:text-amber-400 transition-colors">Our Villas</Link>
             <Link href="#services" className="hover:text-amber-400 transition-colors">Property Management</Link>
@@ -126,7 +126,7 @@ export default function Navbar() {
           {/* Bagian Kanan (Desktop) */}
           <div className="hidden md:flex items-center space-x-3">
             
-            {/* Tombol Airbnb (Menggunakan Gambar) */}
+            {/* Tombol Airbnb */}
             <a
               href={airbnbUrl}
               target="_blank"
@@ -220,8 +220,6 @@ export default function Navbar() {
           <div className="md:hidden absolute top-full left-0 right-0 bg-neutral-900/95 backdrop-blur-lg border-t border-neutral-800 shadow-xl py-6 px-6 flex flex-col space-y-4 text-center">
             
             <div className="flex justify-center items-center space-x-3 py-2 border-b border-neutral-800">
-              
-              {/* Tombol Airbnb Mobile */}
               <a
                 href={airbnbUrl}
                 target="_blank"
@@ -229,16 +227,9 @@ export default function Navbar() {
                 className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden shadow-md bg-white"
                 title="Airbnb Profile"
               >
-                <Image 
-                  src="/airbnb-logo.png" 
-                  alt="Airbnb" 
-                  width={40} 
-                  height={40} 
-                  className="w-full h-full object-cover" 
-                />
+                <Image src="/airbnb-logo.png" alt="Airbnb" width={40} height={40} className="w-full h-full object-cover" />
               </a>
 
-              {/* Tombol WhatsApp Mobile */}
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -250,7 +241,6 @@ export default function Navbar() {
                 </svg>
               </a>
 
-              {/* Tombol Bahasa Mobile */}
               <div className="relative">
                 <button
                   onClick={() => setMobileLangOpen(!mobileLangOpen)}
