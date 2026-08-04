@@ -24,6 +24,7 @@ export default function Navbar() {
   const whatsappNumber = '628091000999';
   const whatsappMessage = encodeURIComponent('Hello, I would like to inquire about TravelLink Bali villa management.');
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  const airbnbUrl = 'https://www.airbnb.com/users/show/6042218';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,14 +103,14 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           
-          {/* Logo Gambar TravelLink Bali */}
+          {/* Logo TravelLink Bali (Sesuai Warna Asli) */}
           <Link href="/" className="flex items-center">
             <Image 
               src="/logo-travellink.png" 
               alt="TravelLink Bali Logo" 
               width={160} 
               height={50} 
-              className="h-10 md:h-12 w-auto object-contain filter brightness-0 invert" 
+              className="h-10 md:h-12 w-auto object-contain" 
               priority
             />
           </Link>
@@ -122,9 +123,22 @@ export default function Navbar() {
             <Link href="#contact" className="hover:text-amber-400 transition-colors">Contact</Link>
           </nav>
 
-          {/* Bagian Kanan (Desktop): WhatsApp, Bahasa, & Book Now */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Bagian Kanan (Desktop): Airbnb, WhatsApp, Bahasa, & Book Now */}
+          <div className="hidden md:flex items-center space-x-3">
             
+            {/* Tombol Airbnb */}
+            <a
+              href={airbnbUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-600/80 hover:bg-rose-600 text-white transition-all shadow-md"
+              title="View Airbnb Profile"
+            >
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.017 17.615c-1.077.584-2.175.885-3.017.885-.929 0-1.895-.349-2.791-1.082-1.211-1.002-2.115-2.616-2.684-4.789-.168-.646-.299-1.282-.39-1.895h2.152c.119.508.283 1.037.498 1.579.467 1.17 1.156 2.302 2.046 3.013.435.349.9.544 1.341.544.512 0 1.054-.239 1.637-.714.471-.386.721-.856.764-1.411H18c-.144 1.488-.935 2.768-2.983 3.37zM16.5 9c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm-9 0C6.672 9 6 8.328 6 7.5S6.672 6 7.5 6 9 6.672 9 7.5 8.328 9 7.5 9zm4.5 4.5c-1.381 0-2.5-1.119-2.5-2.5s1.119-2.5 2.5-2.5 2.5 1.119 2.5 2.5-1.119 2.5-2.5 2.5z"/>
+              </svg>
+            </a>
+
             {/* Tombol WhatsApp */}
             <a
               href={whatsappUrl}
@@ -201,7 +215,22 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-neutral-900/95 backdrop-blur-lg border-t border-neutral-800 shadow-xl py-6 px-6 flex flex-col space-y-4 text-center">
             
-            <div className="flex justify-center items-center space-x-4 py-2 border-b border-neutral-800">
+            <div className="flex justify-center items-center space-x-3 py-2 border-b border-neutral-800">
+              
+              {/* Tombol Airbnb Mobile */}
+              <a
+                href={airbnbUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-600 text-white shadow-md"
+                title="Airbnb Profile"
+              >
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.017 17.615c-1.077.584-2.175.885-3.017.885-.929 0-1.895-.349-2.791-1.082-1.211-1.002-2.115-2.616-2.684-4.789-.168-.646-.299-1.282-.39-1.895h2.152c.119.508.283 1.037.498 1.579.467 1.17 1.156 2.302 2.046 3.013.435.349.9.544 1.341.544.512 0 1.054-.239 1.637-.714.471-.386.721-.856.764-1.411H18c-.144 1.488-.935 2.768-2.983 3.37zM16.5 9c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm-9 0C6.672 9 6 8.328 6 7.5S6.672 6 7.5 6 9 6.672 9 7.5 8.328 9 7.5 9zm4.5 4.5c-1.381 0-2.5-1.119-2.5-2.5s1.119-2.5 2.5-2.5 2.5 1.119 2.5 2.5-1.119 2.5-2.5 2.5z"/>
+                </svg>
+              </a>
+
+              {/* Tombol WhatsApp Mobile */}
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -213,6 +242,7 @@ export default function Navbar() {
                 </svg>
               </a>
 
+              {/* Tombol Bahasa Mobile */}
               <div className="relative">
                 <button
                   onClick={() => setMobileLangOpen(!mobileLangOpen)}
