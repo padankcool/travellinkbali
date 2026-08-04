@@ -1,20 +1,16 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import Services from '@/components/Services';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
-      {/* Navbar di paling atas */}
       <Navbar />
-
-      {/* Hero Section */}
       <Hero />
-
-      {/* About Us Section */}
       <About />
-
-      {/* Bagian selanjutnya (Services, Client, Contact) akan kita buat menyusul */}
+      <Services />
+      {/* Selanjutnya kita bisa lanjut ke Our Client & Contact Us */}
     </main>
   );
 }
