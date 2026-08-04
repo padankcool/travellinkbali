@@ -10,15 +10,14 @@ export default function Contact() {
     message: ''
   });
 
-  const whatsappNumber = '628091000999'; // Ganti dengan nomor asli Bli nanti
-  const emailAddress = 'hello@travellinkbali.com'; // Ganti dengan email asli
-  const instagramUrl = 'https://instagram.com/travellinkbali'; // Ganti dengan IG asli
+  const whatsappNumber = '628091000999'; // Ganti dengan nomor WhatsApp Bli
+  const emailAddress = 'hello@travellinkbali.com'; // Ganti dengan email perusahaan
+  const instagramUrl = 'https://instagram.com/travellinkbali'; // Ganti dengan IG perusahaan
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Fungsi Kirim ke WhatsApp
   const sendViaWhatsApp = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.message) {
@@ -29,7 +28,6 @@ export default function Contact() {
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
   };
 
-  // Fungsi Kirim ke Email
   const sendViaEmail = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.message) {
@@ -45,7 +43,7 @@ export default function Contact() {
     <section id="contact" className="py-28 px-6 bg-neutral-950 text-white relative overflow-hidden">
       
       {/* Background Aksens */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-600/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-amber-600/5 rounded-full blur-[100px] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -65,16 +63,18 @@ export default function Contact() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           
-          {/* Kolom Kiri: Info Kontak & Socials */}
+          {/* Kolom Kiri: Info Kontak, Socials & Map */}
           <ScrollReveal delay={200}>
             <div className="space-y-12">
+              
+              {/* Info Text */}
               <div>
                 <h3 className="text-2xl font-serif mb-6 text-white">Contact Information</h3>
-                <div className="space-y-6 text-neutral-300 font-light text-sm md:text-base">
+                <div className="space-y-5 text-neutral-300 font-light text-sm md:text-base">
                   <p className="flex items-start space-x-4">
-                    <svg className="w-6 h-6 text-amber-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    <svg className="w-6 h-6 text-amber-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                     <span>Jl. Sunset Road, Seminyak<br/>Bali - Indonesia 80361</span>
                   </p>
                   <p className="flex items-center space-x-4">
@@ -88,11 +88,10 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Tombol Social & WhatsApp Langsung */}
+              {/* Tombol Social Media */}
               <div>
-                <h3 className="text-xs uppercase tracking-widest text-neutral-500 font-semibold mb-6">Connect Directly</h3>
-                <div className="flex space-x-4">
-                  {/* WhatsApp Direct Button */}
+                <h3 className="text-xs uppercase tracking-widest text-neutral-500 font-semibold mb-5">Connect Directly</h3>
+                <div className="flex flex-wrap gap-4">
                   <a
                     href={`https://wa.me/${whatsappNumber}`}
                     target="_blank"
@@ -102,8 +101,6 @@ export default function Contact() {
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     <span className="text-xs tracking-wider uppercase font-medium">WhatsApp</span>
                   </a>
-
-                  {/* Instagram Button */}
                   <a
                     href={instagramUrl}
                     target="_blank"
@@ -115,16 +112,31 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
+
+              {/* Google Maps Location */}
+              <div className="w-full h-56 md:h-64 rounded-2xl overflow-hidden border border-neutral-800 shadow-lg relative group">
+                {/* Efek grayscale otomatis agar elegan, saat dihover peta jadi berwarna */}
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.864700874032!2d115.17066927581177!3d-8.704445891343714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd246bc2ab70d43%3A0x82fcae6d393666d6!2sSeminyak%2C%20Kuta%2C%20Badung%20Regency%2C%20Bali!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                ></iframe>
+              </div>
+
             </div>
           </ScrollReveal>
 
           {/* Kolom Kanan: Form Pesan */}
           <ScrollReveal delay={400}>
-            <div className="bg-neutral-900 border border-neutral-800 p-8 md:p-10 rounded-3xl shadow-xl">
+            <div className="bg-neutral-900 border border-neutral-800 p-8 md:p-10 rounded-3xl shadow-xl h-full flex flex-col justify-center">
               <h3 className="text-2xl font-serif mb-6 text-white">Send an Inquiry</h3>
               <form className="space-y-6">
                 
-                {/* Input Name */}
                 <div>
                   <label className="block text-xs uppercase tracking-widest text-neutral-500 font-semibold mb-2">Your Name</label>
                   <input
@@ -137,7 +149,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Input Email */}
                 <div>
                   <label className="block text-xs uppercase tracking-widest text-neutral-500 font-semibold mb-2">Your Email</label>
                   <input
@@ -150,7 +161,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* Input Message */}
                 <div>
                   <label className="block text-xs uppercase tracking-widest text-neutral-500 font-semibold mb-2">Your Message</label>
                   <textarea
@@ -163,7 +173,6 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
-                {/* Tombol Kirim Pilihan */}
                 <div className="pt-4 flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={sendViaEmail}
