@@ -21,7 +21,7 @@ export default function Navbar() {
     { name: '中文', code: 'zh-CN', flag: 'https://flagcdn.com/w40/cn.png' },
   ];
 
-  const whatsappNumber = '628091000999';
+  const whatsappNumber = '6281353077575';
   const whatsappMessage = encodeURIComponent('Hello, I would like to inquire about TravelLink Bali villa management.');
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   const airbnbUrl = 'https://www.airbnb.com/users/show/6042218';
@@ -87,7 +87,6 @@ export default function Navbar() {
     e.preventDefault();
     const section = document.getElementById(sectionId);
     if (section) {
-      // Disesuaikan offset-nya agar tidak tertutup navbar (sekitar 80px)
       const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = section.getBoundingClientRect().top;
@@ -99,7 +98,7 @@ export default function Navbar() {
         behavior: 'smooth'
       });
     }
-    setMobileMenuOpen(false); // Tutup menu mobile setelah klik
+    setMobileMenuOpen(false); 
   };
 
   return (
@@ -134,21 +133,12 @@ export default function Navbar() {
             />
           </Link>
 
-<<<<<<< HEAD
           {/* Menu Navigasi Desktop */}
-          <nav className="hidden md:flex items-center space-x-8 text-sm tracking-wider text-neutral-200">
-            <Link href="#villas" className="hover:text-amber-400 transition-colors">THE VILLAS</Link>
-            <Link href="#experience" className="hover:text-amber-400 transition-colors">EXPERIENCE</Link>
-            <Link href="#location" className="hover:text-amber-400 transition-colors">RESTAURANT</Link>
-            <Link href="#about" className="hover:text-amber-400 transition-colors">ABOUT</Link>
-=======
-          {/* Menu Navigasi Desktop dengan onClick Smooth Scroll */}
           <nav className="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase text-neutral-200">
+            <Link href="/booking" className="hover:text-amber-400 transition-colors">Our Villas</Link>
             <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="hover:text-amber-400 transition-colors cursor-pointer">About Us</a>
             <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="hover:text-amber-400 transition-colors cursor-pointer">Property Management</a>
             <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="hover:text-amber-400 transition-colors cursor-pointer">Contact</a>
-            <Link href="/booking" className="hover:text-amber-400 transition-colors">Our Villas</Link>
->>>>>>> 1365d5fe1f6ab4e918bcd6766490bcf4c4614b22
           </nav>
 
           {/* Bagian Kanan (Desktop) */}
