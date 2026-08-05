@@ -197,7 +197,7 @@ export default function Contact() {
                     onClick={sendViaWhatsApp}
                     className="flex-1 bg-neutral-800 hover:bg-emerald-600 border border-neutral-700 hover:border-transparent text-white text-xs font-medium uppercase tracking-widest py-4 rounded-full transition-all shadow-md"
                   >
-                    Send via WhatsApp
+                    Send via WhatsApp App
                   </button>
                 </div>
                 <p className="text-center text-[10px] text-neutral-500 uppercase tracking-wider mt-4">
