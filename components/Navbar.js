@@ -135,7 +135,7 @@ export default function Navbar() {
 
           {/* Menu Navigasi Desktop */}
           <nav className="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase text-neutral-200">
-            <Link href="/booking" className="hover:text-amber-400 transition-colors">Our Villas</Link>
+            <Link href="/booking" className="hover:text-amber-400 transition-colors">The Villas</Link>
             <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="hover:text-amber-400 transition-colors cursor-pointer">About Us</a>
             <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="hover:text-amber-400 transition-colors cursor-pointer">Property Management</a>
             <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="hover:text-amber-400 transition-colors cursor-pointer">Contact</a>
