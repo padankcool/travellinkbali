@@ -12,13 +12,13 @@ export default function BookingPage() {
       id: 1,
       name: 'Jimbaran & Nusa Dua',
       desc: 'A location brimming with elegance and class, Jimbaran & Nusa Dua are perfect for those looking to experience sheer luxury for their holiday experience.',
-      image: 'app/booking/images/jimbaran.jpg'
+      image: '/jimbaran.jpg'
     },
     {
       id: 2,
       name: 'Sanur',
       desc: 'Discover the coastal charm of Sanur with our villas. Known for its mesmerizing sunrise and rich art culture, Sanur is a place not to be missed.',
-      image: 'app/booking/images/sanur.jpg'
+      image: '/sanur.jpg'
     },
     {
       id: 3,
