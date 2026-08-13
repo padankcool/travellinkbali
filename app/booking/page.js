@@ -192,7 +192,7 @@ export default function BookingPage() {
         <ScrollReveal>
           <div className="max-w-[1400px] mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-2xl md:text-3xl font-serif tracking-widest text-amber-500 uppercase">Destinations</h2>
+              <h2 className="text-2xl md:text-3xl font-serif tracking-widest text-amber-500 uppercase">Choose Your Destinations</h2>
               <div className="w-10 h-[1px] bg-neutral-700 mx-auto mt-6" />
             </div>
 
