@@ -6,7 +6,44 @@ import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 
 export default function BookingPage() {
-  // === DATA VILLA DUMMY (Total 12 Data untuk mendemonstrasikan Pagination 9 item/page) ===
+  // === DATA DESTINATIONS (Accordion Slider) ===
+  const destinations = [
+    {
+      id: 1,
+      name: 'Jimbaran & Nusa Dua',
+      desc: 'A location brimming with elegance and class, Jimbaran & Nusa Dua are perfect for those looking to experience sheer luxury for their holiday experience.',
+      image: 'https://images.unsplash.com/photo-1590381105801-94576313170e?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+      id: 2,
+      name: 'Sanur',
+      desc: 'Discover the coastal charm of Sanur with our villas. Known for its mesmerizing sunrise and rich art culture, Sanur is a place not to be missed.',
+      image: 'https://images.unsplash.com/photo-1497362943212-005128e461b2?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+      id: 3,
+      name: 'Ubud & Beyond',
+      desc: "Experience Bali's world renowned paddy fields and serene natural beauty with our villas in Ubud. Witness the magnificent blend of culture and nature.",
+      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+      id: 4,
+      name: 'Seminyak & Kerobokan',
+      desc: 'Experience a variety of restaurants, vibrant nightlife, and serene beaches. Elevate your stay with our comfortable villas and attentive staff.',
+      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1000&auto=format&fit=crop'
+    },
+    {
+      id: 5,
+      name: 'Canggu & Beyond',
+      desc: "Known as Bali's coolest area, our Canggu villas promise an unparalleled experience with spacious bedrooms, large swimming pools, and lush gardens.",
+      image: 'https://images.unsplash.com/photo-1613490453576-3100d7f6c7fe?q=80&w=1000&auto=format&fit=crop'
+    }
+  ];
+
+  // State untuk Destinasi yang aktif (Default: Ubud - index 3)
+  const [activeDest, setActiveDest] = useState(3);
+
+  // === DATA VILLA DUMMY (Grid 3x3) ===
   const allVillas = [
     {
       id: 1, name: 'Villa Serenity', location: 'Ubud, Gianyar', price: 'From $450/night',
@@ -79,27 +116,6 @@ export default function BookingPage() {
       features: ['2 Bedrooms', 'Rooftop Jacuzzi', 'Ocean View', 'Modern Setup'],
       mainImage: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1000&auto=format&fit=crop',
       gallery: ['https://images.unsplash.com/photo-1613490453576-3100d7f6c7fe?q=80&w=1000&auto=format&fit=crop']
-    },
-    {
-      id: 10, name: 'Hidden Gem', location: 'Lovina, Buleleng', price: 'From $350/night',
-      description: 'Escape to the quiet north. A beautiful beachfront villa known for its calm waters and morning dolphin sightings straight from the terrace.',
-      features: ['3 Bedrooms', 'North Beach', 'Dolphin Tour', 'Quiet Area'],
-      mainImage: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1000&auto=format&fit=crop',
-      gallery: ['https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1000&auto=format&fit=crop']
-    },
-    {
-      id: 11, name: 'Tropical Paradise', location: 'Legian, Badung', price: 'From $420/night',
-      description: 'A vibrant, colorful villa perfectly situated between Seminyak and Kuta. Walk to the beach and enjoy the best of Bali’s nightlife and dining.',
-      features: ['4 Bedrooms', 'Central Location', 'Party Ready', 'Large Pool'],
-      mainImage: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1000&auto=format&fit=crop',
-      gallery: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop']
-    },
-    {
-      id: 12, name: 'The Sanctuary', location: 'Tabanan', price: 'From $850/night',
-      description: 'Absolute privacy surrounded by untouched nature. This sprawling estate is designed for ultimate relaxation, featuring an in-house spa and sprawling gardens.',
-      features: ['6 Bedrooms', 'In-house Spa', 'Nature Retreat', 'Helipad'],
-      mainImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop',
-      gallery: ['https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1000&auto=format&fit=crop']
     }
   ];
 
@@ -116,18 +132,19 @@ export default function BookingPage() {
 
   const handleNextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-    window.scrollTo({ top: 400, behavior: 'smooth' }); // Scroll ke atas grid saat ganti halaman
+    const gridSection = document.getElementById('villa-grid');
+    if (gridSection) gridSection.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
-    window.scrollTo({ top: 400, behavior: 'smooth' });
+    const gridSection = document.getElementById('villa-grid');
+    if (gridSection) gridSection.scrollIntoView({ behavior: 'smooth' });
   };
 
   // === LOGIKA MODAL POPUP ===
   const [selectedVilla, setSelectedVilla] = useState(null);
 
-  // Mencegah scroll pada background saat modal terbuka
   useEffect(() => {
     if (selectedVilla) {
       document.body.style.overflow = 'hidden';
@@ -137,6 +154,11 @@ export default function BookingPage() {
     return () => { document.body.style.overflow = 'unset'; };
   }, [selectedVilla]);
 
+  // Handle klik "Explore More" di Accordion
+  const handleExploreMore = () => {
+    const gridSection = document.getElementById('villa-grid');
+    if (gridSection) gridSection.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <main className="min-h-screen bg-neutral-950 text-white flex flex-col relative">
@@ -144,10 +166,10 @@ export default function BookingPage() {
 
       {/* Hero Header dengan Efek Parallax (bg-fixed) */}
       <section 
-        className="relative pt-48 pb-32 px-6 overflow-hidden bg-fixed bg-center bg-cover"
+        className="relative pt-48 pb-10 px-6 overflow-hidden bg-fixed bg-center bg-cover"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000&auto=format&fit=crop')" }}
       >
-        <div className="absolute inset-0 bg-neutral-950/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-neutral-950/85 backdrop-blur-[4px]" />
         
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <ScrollReveal>
@@ -159,38 +181,118 @@ export default function BookingPage() {
             </h1>
             <div className="w-16 h-[1px] bg-amber-500 mx-auto mb-6" />
             <p className="text-neutral-300 text-sm md:text-base font-light max-w-2xl mx-auto">
-              Curated luxury properties designed for the ultimate Balinese getaway. Explore our exclusive grid of sanctuaries.
+              Curated luxury properties designed for the ultimate Balinese getaway.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Grid Instagram Style (3x3) */}
-      <section className="py-20 px-4 md:px-6 flex-grow max-w-[1400px] w-full mx-auto">
+      {/* === ACCORDION DESTINATIONS === */}
+      <section className="py-20 px-4 md:px-6 bg-neutral-950">
+        <ScrollReveal>
+          <div className="max-w-[1400px] mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl md:text-3xl font-serif tracking-widest text-amber-500 uppercase">Destinations</h2>
+              <div className="w-10 h-[1px] bg-neutral-700 mx-auto mt-6" />
+            </div>
+
+            {/* Kontainer Flex Accordion */}
+            <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 lg:h-[500px]">
+              {destinations.map((dest, index) => {
+                const isActive = activeDest === dest.id;
+                // Logika odd/even untuk efek staggered pada desktop saat sedang tidak aktif
+                const isOdd = index % 2 !== 0;
+
+                return (
+                  <div
+                    key={dest.id}
+                    onClick={() => setActiveDest(dest.id)}
+                    className={`relative flex flex-col group cursor-pointer transition-all duration-700 ease-in-out
+                      ${isActive ? 'lg:basis-[45%] h-[400px] lg:h-full' : 'lg:basis-[13.75%] h-[120px] lg:h-full'}
+                      ${!isActive && isOdd ? 'lg:pt-12' : ''}
+                    `}
+                  >
+                    {/* Gambar & Overlay Container */}
+                    <div className={`relative w-full overflow-hidden transition-all duration-700 ease-in-out h-full rounded-xl lg:rounded-none
+                      ${isActive ? 'grayscale-0' : 'grayscale opacity-70 hover:grayscale-[30%] hover:opacity-100'}
+                    `}>
+                      <img 
+                        src={dest.image} 
+                        alt={dest.name} 
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                      
+                      {/* Konten Saat Aktif */}
+                      <div className={`absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent flex flex-col justify-end p-6 md:p-10 transition-opacity duration-700
+                        ${isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+                      `}>
+                        <div className={`transition-all duration-700 delay-300 transform ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                          <h3 className="text-2xl md:text-3xl font-serif text-white uppercase tracking-widest mb-4">
+                            {dest.name}
+                          </h3>
+                          <p className="text-sm text-neutral-300 font-light leading-relaxed mb-6 max-w-sm">
+                            {dest.desc}
+                          </p>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleExploreMore();
+                            }}
+                            className="text-amber-500 border-b border-amber-500 pb-1 text-xs uppercase tracking-widest font-semibold hover:text-white hover:border-white transition-colors"
+                          >
+                            Explore More
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Judul Teks Saat Tidak Aktif (Desktop Only) */}
+                    <div className={`hidden lg:block text-center mt-6 transition-all duration-500
+                      ${isActive ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'}
+                    `}>
+                      <span className="text-xs font-serif tracking-widest uppercase text-neutral-400">
+                        {dest.name}
+                      </span>
+                    </div>
+
+                    {/* Judul Mobile Saat Tidak Aktif */}
+                    <div className={`lg:hidden absolute inset-0 flex items-center justify-center bg-neutral-950/50 transition-opacity duration-500 pointer-events-none
+                      ${isActive ? 'opacity-0' : 'opacity-100'}
+                    `}>
+                      <span className="text-sm font-serif tracking-widest uppercase text-white drop-shadow-lg">
+                        {dest.name}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* === GRID INSTAGRAM STYLE (3x3) === */}
+      <section id="villa-grid" className="py-20 px-4 md:px-6 flex-grow max-w-[1400px] w-full mx-auto scroll-mt-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
           {currentVillas.map((villa, index) => (
-            <ScrollReveal key={villa.id} delay={index * 100} className="w-full">
-              {/* Kartu Grid (Aspect Square) */}
+            <ScrollReveal key={villa.id} delay={index * 50} className="w-full">
               <div 
                 onClick={() => setSelectedVilla(villa)}
                 className="group relative aspect-square overflow-hidden cursor-pointer bg-neutral-900"
               >
-                {/* Gambar Villa */}
                 <img 
                   src={villa.mainImage} 
                   alt={villa.name} 
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 filter brightness-[0.8]"
                 />
                 
-                {/* Overlay Hitam Halus Saat Hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
 
-                {/* Teks Informasi */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <span className="text-amber-400 text-[10px] tracking-widest uppercase font-semibold mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                     {villa.location}
                   </span>
-                  <h3 className="text-2xl font-serif text-white">
+                  <h3 className="text-2xl font-serif text-white drop-shadow-md">
                     {villa.name}
                   </h3>
                 </div>
@@ -199,7 +301,7 @@ export default function BookingPage() {
           ))}
         </div>
 
-        {/* Kontrol Pagination (Next/Prev) */}
+        {/* Kontrol Pagination */}
         {totalPages > 1 && (
           <div className="mt-16 flex items-center justify-center space-x-6">
             <button 
@@ -228,16 +330,13 @@ export default function BookingPage() {
       {/* === MODAL POP-UP DETAIL VILLA === */}
       {selectedVilla && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10">
-          {/* Backdrop Gelap dengan Blur */}
           <div 
             className="absolute inset-0 bg-neutral-950/90 backdrop-blur-md cursor-pointer"
             onClick={() => setSelectedVilla(null)}
           />
           
-          {/* Kontainer Modal */}
           <div className="relative w-full max-w-6xl max-h-full bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col lg:flex-row animate-fade-in-up">
             
-            {/* Tombol Tutup (Close - X) */}
             <button 
               onClick={() => setSelectedVilla(null)}
               className="absolute top-4 right-4 z-50 w-10 h-10 bg-neutral-950/50 rounded-full flex items-center justify-center text-white hover:bg-amber-600 transition-colors"
@@ -245,7 +344,6 @@ export default function BookingPage() {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
 
-            {/* Sisi Kiri Modal (Galeri Foto) */}
             <div className="w-full lg:w-1/2 p-4 flex flex-col gap-4">
               <div className="w-full h-64 md:h-96 rounded-xl overflow-hidden">
                 <img src={selectedVilla.mainImage} alt={selectedVilla.name} className="w-full h-full object-cover" />
@@ -259,7 +357,6 @@ export default function BookingPage() {
               </div>
             </div>
 
-            {/* Sisi Kanan Modal (Informasi & Booking) */}
             <div className="w-full lg:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-neutral-900">
               <span className="text-amber-500 text-xs tracking-[0.3em] uppercase mb-2 block font-semibold">
                 {selectedVilla.location}
@@ -273,7 +370,6 @@ export default function BookingPage() {
                 {selectedVilla.description}
               </p>
 
-              {/* Fasilitas */}
               <h4 className="text-white text-xs uppercase tracking-widest font-semibold mb-4">Villa Features</h4>
               <div className="grid grid-cols-2 gap-y-3 mb-10">
                 {selectedVilla.features.map((feature, i) => (
@@ -284,7 +380,6 @@ export default function BookingPage() {
                 ))}
               </div>
 
-              {/* Harga & Tombol Booking */}
               <div className="mt-auto pt-8 border-t border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <div>
                   <span className="block text-xs uppercase tracking-widest text-neutral-500 mb-1">Rates</span>
@@ -309,7 +404,6 @@ export default function BookingPage() {
 
       <Footer />
       
-      {/* Tambahan animasi CSS sederhana untuk modal pop-up agar munculnya mulus */}
       <style jsx global>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px) scale(0.98); }
