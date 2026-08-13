@@ -24,19 +24,19 @@ export default function BookingPage() {
       id: 3,
       name: 'Ubud & Beyond',
       desc: "Experience Bali's world renowned paddy fields and serene natural beauty with our villas in Ubud. Witness the magnificent blend of culture and nature.",
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1000&auto=format&fit=crop'
+      image: '/ubud.jpg'
     },
     {
       id: 4,
       name: 'Seminyak & Kerobokan',
       desc: 'Experience a variety of restaurants, vibrant nightlife, and serene beaches. Elevate your stay with our comfortable villas and attentive staff.',
-      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1000&auto=format&fit=crop'
+      image: '/seminyak.jpg'
     },
     {
       id: 5,
       name: 'Canggu & Beyond',
       desc: "Known as Bali's coolest area, our Canggu villas promise an unparalleled experience with spacious bedrooms, large swimming pools, and lush gardens.",
-      image: 'https://images.unsplash.com/photo-1613490453576-3100d7f6c7fe?q=80&w=1000&auto=format&fit=crop'
+      image: '/canggu.jpg'
     }
   ];
 
