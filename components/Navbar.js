@@ -27,7 +27,7 @@ export default function Navbar() {
   const whatsappMessage = encodeURIComponent('Hello, I would like to inquire about TravelLink Bali villa management.');
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   const airbnbUrl = 'https://www.airbnb.com/users/show/6042218';
-  const airbnbLogoImg = https://logo-teka.com/wp-content/uploads/2025/08/airbnb-icon-logo.svg'; // Logo request Bli
+  const airbnbLogoImg = 'https://logo-teka.com/wp-content/uploads/2025/08/airbnb-icon-logo.svg'; // Logo request Bli
 
   // Deteksi Scroll
   useEffect(() => {
