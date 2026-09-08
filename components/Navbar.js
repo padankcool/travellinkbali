@@ -114,15 +114,6 @@ export default function Navbar() {
   return (
     <>
       <div id="google_translate_element" className="hidden"></div>
-      <style jsx global>{`
-        body { top: 0 !important; scroll-behavior: smooth; }
-        .goog-te-banner-frame { display: none !important; }
-        .skiptranslate { display: none !important; }
-        #goog-gt-tt { display: none !important; }
-        .goog-tooltip { display: none !important; }
-        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
-      `}</style>
-
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
