@@ -36,7 +36,7 @@ export default function About() {
                 Born out of a deep passion for Bali’s unique charm and high-end tourism, <strong className="text-white font-medium">TravelLink Bali</strong> operates as an elite extension of your property asset. We are more than just managers; we are master curators of guest experiences and revenue strategists.
               </p>
               <p>
-                As specialized experts embedded deeply within the island's <strong className="text-white font-medium">sales, marketing, and reservation</strong> ecosystem, we understand the intricacies of driving consistent occupancy in Bali's dynamic hospitality market.
+                As specialized experts embedded deeply within the island&apos;s <strong className="text-white font-medium">sales, marketing, and reservation</strong> ecosystem, we understand the intricacies of driving consistent occupancy in Bali&apos;s dynamic hospitality market.
               </p>
               <div className="pt-4 border-t border-neutral-800 grid grid-cols-2 gap-6">
                 <div>

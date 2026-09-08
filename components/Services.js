@@ -52,7 +52,7 @@ export default function Services() {
             </h2>
             <div className="w-16 h-[1px] bg-amber-500 mx-auto mb-6" />
             <p className="text-stone-600 text-sm md:text-base font-light leading-relaxed">
-              Tailored professional hospitality solutions designed to elevate your property's performance and secure absolute peace of mind.
+              Tailored professional hospitality solutions designed to elevate your property&apos;s performance and secure absolute peace of mind.
             </p>
           </div>
         </ScrollReveal>
