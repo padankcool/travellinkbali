@@ -115,11 +115,14 @@ export default function Navbar() {
     <>
       <div id="google_translate_element" className="hidden"></div>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-neutral-900/95 backdrop-blur-md shadow-lg py-3'
-            : 'bg-transparent py-5'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          backgroundColor: isScrolled ? 'rgba(23, 23, 23, 0.95)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+          WebkitBackdropFilter: isScrolled ? 'blur(12px)' : 'none',
+          boxShadow: isScrolled ? '0 4px 30px rgba(0,0,0,0.4)' : 'none',
+          padding: isScrolled ? '12px 0' : '20px 0',
+        }}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           
