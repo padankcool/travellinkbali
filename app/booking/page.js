@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ScrollReveal from '@/components/ScrollReveal';
 
 export default function BookingPage() {
   // === DATA DESTINATIONS (Accordion Slider) ===
@@ -172,7 +171,7 @@ export default function BookingPage() {
         <div className="absolute inset-0 bg-neutral-950/85 backdrop-blur-[4px]" />
         
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          <ScrollReveal>
+          <div>
             <span className="text-amber-500 text-xs tracking-[0.4em] uppercase mb-4 block font-semibold">
               TravelLink Collection
             </span>
@@ -183,14 +182,13 @@ export default function BookingPage() {
             <p className="text-neutral-300 text-sm md:text-base font-light max-w-2xl mx-auto">
               Curated luxury properties designed for the ultimate Balinese getaway.
             </p>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
       {/* === ACCORDION DESTINATIONS === */}
       <section className="py-20 px-4 md:px-6 bg-neutral-950">
-        <ScrollReveal>
-          <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-[1400px] mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-2xl md:text-3xl font-serif tracking-widest text-amber-500 uppercase">Choose Your Destinations</h2>
               <div className="w-10 h-[1px] bg-neutral-700 mx-auto mt-6" />
@@ -267,15 +265,14 @@ export default function BookingPage() {
                 );
               })}
             </div>
-          </div>
-        </ScrollReveal>
+        </div>
       </section>
 
       {/* === GRID INSTAGRAM STYLE (3x3) === */}
       <section id="villa-grid" className="py-20 px-4 md:px-6 flex-grow max-w-[1400px] w-full mx-auto scroll-mt-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
-          {currentVillas.map((villa, index) => (
-            <ScrollReveal key={villa.id} delay={index * 50} className="w-full">
+          {currentVillas.map((villa) => (
+            <div key={villa.id} className="w-full">
               <div 
                 onClick={() => setSelectedVilla(villa)}
                 className="group relative aspect-square overflow-hidden cursor-pointer bg-neutral-900"
@@ -297,7 +294,7 @@ export default function BookingPage() {
                   </h3>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
           ))}
         </div>
 

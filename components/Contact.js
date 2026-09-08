@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import ScrollReveal from './ScrollReveal';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -49,25 +48,23 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header Section */}
-        <ScrollReveal>
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <span className="text-amber-500 text-xs tracking-[0.4em] uppercase mb-3 block font-semibold">
-              Get In Touch
-            </span>
-            <h2 className="text-3xl md:text-5xl font-serif tracking-wider mb-6">
-              Connect With Us
-            </h2>
-            <div className="w-16 h-[1px] bg-amber-500 mx-auto mb-6" />
-            <p className="text-neutral-400 text-sm md:text-base font-light leading-relaxed">
-              Whether you are looking for an exquisite stay or seeking expert management for your luxury property in Bali, our team is ready to assist you.
-            </p>
-          </div>
-        </ScrollReveal>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="text-amber-500 text-xs tracking-[0.4em] uppercase mb-3 block font-semibold">
+            Get In Touch
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif tracking-wider mb-6">
+            Connect With Us
+          </h2>
+          <div className="w-16 h-[1px] bg-amber-500 mx-auto mb-6" />
+          <p className="text-neutral-400 text-sm md:text-base font-light leading-relaxed">
+            Whether you are looking for an exquisite stay or seeking expert management for your luxury property in Bali, our team is ready to assist you.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           
           {/* Kolom Kiri: Info Kontak, Socials & Map */}
-          <ScrollReveal delay={200}>
+          <div>
             <div className="space-y-12">
               
               {/* Info Text */}
@@ -133,10 +130,10 @@ export default function Contact() {
               </div>
 
             </div>
-          </ScrollReveal>
+          </div>
 
           {/* Kolom Kanan: Form Pesan dengan field "Subject" baru */}
-          <ScrollReveal delay={400}>
+          <div>
             <div className="bg-neutral-900 border border-neutral-800 p-8 md:p-10 rounded-3xl shadow-xl h-full flex flex-col justify-center">
               <h3 className="text-2xl font-serif mb-6 text-white">Send a message to us</h3>
               <form className="space-y-6">
@@ -206,7 +203,7 @@ export default function Contact() {
                 
               </form>
             </div>
-          </ScrollReveal>
+          </div>
 
         </div>
       </div>
